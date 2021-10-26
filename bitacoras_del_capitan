@@ -1,0 +1,18 @@
+-> situarse en la carpta donde se encuentra el archivo Dockerfile
+   -> $ docker build -t vueapp -f Dockerfile .
+
+-> situarse en la carpeta donde estara alojado el nuevo proyecto
+   -> $ docker run -itd -v ${PWD}:/app --name contenedor_proyecto_vue vueapp
+   -> esto crea un contenedor especifico para este proyecto, asociado a la carpeta del nuevo proyecto
+      siempre que se ejecute un comando sobre este contenedor se estara modificando este proyecto, independientemente del del lugar donde ejecutemos la accion
+
+-> ya sobre el nuevo contenedor creamos el nuevo proyecto
+   -> $ docker exec -it contenedor_proyecto_vue vue create my-project
+   -> $ su
+   -> # chown -R gabrieeelsp:gabrieeelsp my-project
+
+-> para correr el servidor de prueba
+   -> docker-compose up -d
+
+-> para instalar algun paquete npm
+   -> $ docker-compose exec app npm i paquete
